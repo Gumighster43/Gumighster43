@@ -1,0 +1,207 @@
+<html>
+
+<head>
+    <!-- Comments: Made By: Matthew Gu
+     Assistance from-Ben Johanski, Teodor Gramatnikovski 
+     Description: A web page consisting of if-then statements to create a small, simple virtual pet. -->
+    <title>Dynamite The Dachshund</title>
+</head>
+<script>
+
+    var change = false 
+     
+     setInterval("update()", 1000) ;
+   //function leavealone changes the pet status when left alone 
+    function leavealone() 
+     {  
+         actions()
+    var status= document.getElementById("status")
+    var action= document.getElementById("petaction") 
+    var sound= document.getElementById("petsound") 
+    if (change == false )
+    {
+      if (status.value =="normal") 
+          { 
+          status.value = "sad" 
+          } 
+         else if (status.value == "sad") 
+             { 
+             status.value = "angry"
+             }  
+         else if (status.value =="angry") 
+             { 
+             status.value = "aggressive"
+             } 
+         else if (status.value == "aggressive")
+            { 
+            status.value = "sad"
+            }  
+         else if (status.value == "sad") 
+             { 
+             status.value = "normal"
+             }
+     }  
+     }
+    // function playwith changes the pet state when played with
+    function playwith() 
+    {  
+    actions() 
+        var status = document.getElementById("status")
+        var action = document.getElementById("petaction")
+        var sound = document.getElementById("petsound") 
+        if (change == false)
+   { if (status.value == "normal") 
+        {
+            status.value = "elated"
+        } 
+        else if (status.value == "elated") 
+        { 
+            status.value = "sad"
+        } 
+    else if (status.value == "sad") 
+        {
+            status.value = "mad"
+        }
+    else if (status.value == "mad") 
+        {
+            status.value = "aggressive"
+        } 
+        else if (status.value == "aggressive") 
+            {
+                status.value = "normal"
+            }
+    } 
+    }
+    //changes the pet action and sound when status changes
+    function actions() 
+    {
+        var status = document.getElementById("status") 
+        var action = document.getElementById("petaction") 
+        var sound = document.getElementById("petsound") 
+        if (change == false)
+        {if (status.value == "elated") 
+            { 
+                document.getElementById('img').src = "elated.jpg";
+                action.value = "wag tail" 
+                sound.value = "woof"
+            } 
+        else if (status.value == "normal") 
+            { 
+                document.getElementById('img').src = "normal.jpg";
+                action.value = "pant"
+                sound.value = "wag tail"
+            } 
+        else if  (status.value == "mad") 
+            {  
+                document.getElementById('img').src = "mad.jpg";
+                action.value = "show teeth"
+                sound.value = "growl"
+            } 
+        else if (status.value == "aggressive") 
+            { 
+                document.getElementById('img').src = "aggressive.jpg";
+                action.value = "tail straight" 
+                sound.value = "bark"
+            } 
+        else if (status.value == "sad") 
+            { 
+                document.getElementById('img').src = "sad.jpg";
+                action.value = "tail down"
+                sound.value = "whine"
+            }
+    }  
+    } 
+     //The use of the update function is to have the counter increase by 1 every second, and for there to have chances of random changes of state
+     function update()
+    {   
+        var status= document.getElementById("status")
+        var action= document.getElementById("petaction")
+        var sound= document.getElementById("petsound")
+        if (change==false)
+        {
+        counter.value++ 
+        var randomVal = Math.random();
+        if (status.value=="elated" && randomVal < .1)
+        {status.value="aggressive"
+         document.getElementById('img').src = "aggressive.jpg"
+         action.value="tail straight"
+         sound.value="bark"}
+        else if (status.value == "normal" && randomVal < .18)
+        {status.value="elated"
+         document.getElementById('img').src = "elated.jpg";
+         action.value="wag tail"
+         sound.value="woof"}
+        else if (status.value == "sad" && randomVal < .15)
+        {status.value="normal"
+         document.getElementById('img').src = "normal.jpg"
+         action.value="pant"
+         sound.value="wag tail"}
+        else if (status.value == "mad" && randomVal < .1)
+        {status.value="sad"
+         document.getElementById('img').src = "sad.jpg";
+         action.value="tail down"
+         sound.value="whine"}
+        else if (status.value == "aggressive" && randomVal < .05)
+        {status.value="mad"
+         document.getElementById('img').src = "mad.jpg"
+         action.value="show teeth"
+         sound.value="growl"}
+        }
+    }   
+    //The init function is used to create starting values of status and counter
+    function init()
+    {
+        document.getElementById("status").value="normal"
+        counter.value=0
+        actions()
+    }
+//function butn works with the boolean to pause the functions above. It can be clicked once again to resume the function thus making the change to true.
+    function butn()
+    {   
+        if (change==false)
+            {
+                myButn.value="Resume"
+                change=true 
+            }
+        else if (change==true)
+            {
+                myButn.value="Pause"
+                change=false
+            }
+    }
+</script>
+
+<h1>Dynamite The Dachshund</h1>
+
+<body onload=init()>
+
+
+    <p><img id=img src="normal.jpg" height="200" width="150"> </p>
+
+
+    <p> <B>Pet sound:</B> <input id="petsound" TYPE=text NAME=petsound VALUE="" SIZE=35></p>
+
+    <p> <B>Pet action:</B> <input id="petaction" TYPE=text NAME=petaction VALUE="" SIZE=35></p>
+
+
+
+
+    <p> <input type="button" value="leavealone" onclick="leavealone();actions();update()">
+        <input type="button" value="play with" onclick="playwith();actions();update()"></p>
+
+
+
+
+    <p style="text-align: left"> <input id="status" type=hidden name=status value="" size=35></p>
+
+    <p style="text-align: center"> <input id="counter" type=hidden name=counter value="" size=35></p>
+
+
+    <p style="text-align: center"> <input id="myButn" type=button name="myButn" value="Pause" onclick="butn()"></p>
+
+
+
+
+</body>
+
+</html>

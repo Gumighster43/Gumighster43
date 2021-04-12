@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=TalkingRobot
+comment0.text=\n\ \ Lab\:\ TalkingRobot\ Lab\ <br>\n\n\ \ The\ TalkingRobot\ class\ provides\ a\ robot\ that\ can\ tell\ the\ time\ and\ a\ random\ statement\ based\ off\ of\ that\ time.\ \n\ \n\n\ \ A\ more\ detailed\ description\ goes\ here,\ if\ necessary.\n\ \ <br>\ <br>\n\ \ Created\:\ <br>\n\ \ \ \ \ [9\ January\ 2019],\ [Matthew\ Gu]<br>\n\ \ Modifications\:\ <br>\n\ \ \ \ \ [15\ January\ 2019],\ [Matthew\ Gu],\ <br>\n\n\ \ @author\ [Matthew\ Gu]\ \ \n\ \ @author\ [with\ assistance\ from\ T.A]\n\ \ @version\ [15\ January\ 2019]\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\n\ \ The\ main\ function\ initiates\ execution\ of\ this\ program.\n\ \ \ \ @param\ \ \ \ String[]\ args\ not\ used\ in\ this\ program\n
+numComments=2
